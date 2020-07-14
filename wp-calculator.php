@@ -10,13 +10,24 @@
  * License: MIT
  */
 
+wp_register_style( 'wp-calculator-style', plugin_dir_url( __FILE__ ) . 'calculator.css' );
+
 function foobar_func( $atts ) {
+  wp_enqueue_style( 'wp-calculator-style' );
+
+  ob_start();
+  include __DIR__ . '/calculator.html';
+  return ob_get_clean();
 }
 add_shortcode( 'wp_calculator', 'foobar_func' );
 
 // if ( isset( $_GET['page'] ) && 'wp-calculator' === $_GET['page'] ) {
 // 	add_action( 'in_admin_header', 'hide_unrelated_notices' );
 // }
+
+function render_wp_calculator_settings() {
+  echo 'hello';
+}
 
 // add to settings menu
 add_action(
@@ -27,7 +38,7 @@ add_action(
 			'WP Calculator',
 			'manage_options',
 			'wp-calculator',
-			'render_wp_calculator_home',
+			'render_wp_calculator_settings',
 			'dashicons-welcome-widgets-menus',
 			30
 		);

@@ -1,0 +1,90 @@
+.wp-calculator {
+  border: 1px solid #dfe1e5;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 14px 14px 0 14px;
+}
+
+.wp-calculator table {
+  table-layout: fixed;
+}
+
+.wpc-output {
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  padding: 6px 14px;
+  margin-bottom: 5px;
+}
+
+.wpc-output__row {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.wpc-output__previous-output, .wpc-output__current-output {
+  display: table-row;
+}
+
+.wpc-output__previous-output__one-down, .wpc-output__current-output__one-down {
+  display: table-cell;
+}
+
+.wpc-output__previous-output__text, .wpc-output__current-output__text {
+  float: right;
+  width: 100%;
+  text-align: right;
+  font-family: arial,sans-serif;
+}
+
+.wpc-output__previous-output__text {
+  font-size: 13px;
+  color: #70757a;
+  user-select: none;
+}
+
+.wpc-output__current-output__text {
+  font-size: 24px;
+}
+
+.wpc-actions__action-button {
+  height: 27px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: arial,sans-serif;
+  border-radius: 4px;
+  text-align: center;
+  background-color: #dfe1e5;
+  margin: 2px;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.wpc-actions__action-button:hover {
+  background: #e8eaeb;
+  background-color: #e8eaeb;
+  /* border: 1px solid #bdc1c6; */
+}
+
+.wpc-actions__row td {
+  padding: 0;
+  border: none;
+}
+
+.wpc-gray-white-bg {
+  background-color: #f1f3f4;
+  background: #f1f3f4;
+}
+
+.wpc-calculate-action {
+  color: white;
+  background: #4d8bf1;
+  background-color: #4d8bf1;
+  font-weight: bold;
+}
+
+.wpc-calculate-action:hover {
+  color: white;
+  background: #72a2f0;
+  background-color: #72a2f0;
+}
