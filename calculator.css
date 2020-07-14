@@ -3,6 +3,7 @@
   background-color: #fff;
   border-radius: 8px;
   padding: 14px 14px 0 14px;
+  width: 475px;
 }
 
 .wp-calculator table {
@@ -48,14 +49,15 @@
 }
 
 .wpc-actions__action-button {
-  height: 27px;
+  height: 34px;
+  line-height: 34px;
   font-size: 14px;
   cursor: pointer;
   font-family: arial,sans-serif;
   border-radius: 4px;
   text-align: center;
   background-color: #dfe1e5;
-  margin: 2px;
+  margin: 4px;
   border: 1px solid transparent;
   user-select: none;
 }
