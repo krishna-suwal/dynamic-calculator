@@ -2,12 +2,14 @@
   border: 1px solid #dfe1e5;
   background-color: #fff;
   border-radius: 8px;
-  padding: 14px 14px 0 14px;
-  width: 475px;
+  padding: 14px;
+  width: 475px !important;
 }
 
 .wp-calculator table {
   table-layout: fixed;
+  margin: 0 !important;
+  border: none !important;
 }
 
 .wpc-output {
