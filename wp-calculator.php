@@ -10,23 +10,37 @@
  * License: MIT
  */
 
-wp_register_style( 'wp-calculator-style', plugin_dir_url( __FILE__ ) . 'calculator.css' );
+if ( defined( 'WPC_ENV_DEV' ) && WPC_ENV_DEV ) {
+	define( 'WPC_JS_DIR_URL', 'http://localhost:3000/static/js' );
+	define( 'WPC_CSS_DIR_URL', 'http://localhost:3000/static/css' );
+} else {
+	define( 'WPC_JS_DIR_URL', plugin_dir_url( __FILE__ ) . 'assets/js' );
+	define( 'WPC_CSS_DIR_URL', plugin_dir_url( __FILE__ ) . 'assets/css' );
+}
 
 function foobar_func( $atts ) {
-  wp_enqueue_style( 'wp-calculator-style' );
+	$react_js     = includes_url( 'js/dist/vendor/react.min.js?ver=16.9.0' );
+	$react_dom_js = includes_url( 'js/dist/vendor/react-dom.min.js?ver=16.9.0' );
+	$js_to_load   = WPC_JS_DIR_URL . '/main.js';
+	$css_to_load  = WPC_CSS_DIR_URL . '/main.css';
 
-  ob_start();
-  include __DIR__ . '/calculator.html';
-  return ob_get_clean();
+	wp_enqueue_script( 'wpc-react-js', $react_js, array(), false, true );
+	wp_enqueue_script( 'wpc-react-dom-js', $react_dom_js, array(), false, true );
+	wp_enqueue_script( 'wpc-js', $js_to_load, array( 'wpc-react-js', 'wpc-react-dom-js' ), false, true );
+	wp_enqueue_style( 'wpc-css', $css_to_load );
+
+	ob_start();
+	echo '<div id="wp-calculator"></div>';
+	return ob_get_clean();
 }
 add_shortcode( 'wp_calculator', 'foobar_func' );
 
 // if ( isset( $_GET['page'] ) && 'wp-calculator' === $_GET['page'] ) {
-// 	add_action( 'in_admin_header', 'hide_unrelated_notices' );
+// add_action( 'in_admin_header', 'hide_unrelated_notices' );
 // }
 
 function render_wp_calculator_settings() {
-  echo 'hello';
+	echo 'hello';
 }
 
 // add to settings menu
