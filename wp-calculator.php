@@ -10,86 +10,36 @@
  * License: MIT
  */
 
-define( 'WPC_MAIN_JS_ASSET_FILENAME', 'main.9efc37ffe3a3c8b9edf9.js' );
-define( 'WPC_MAIN_CSS_ASSET_FILENAME', 'main.e76014289cf0d614f29a.css' );
 
 if ( defined( 'WPC_ENV_DEV' ) && WPC_ENV_DEV ) {
 	define( 'WPC_JS_DIR_URL', 'http://localhost:3000/static/js' );
 	define( 'WPC_CSS_DIR_URL', 'http://localhost:3000/static/css' );
+
+	define( 'WPC_MAIN_JS_ASSET_FILENAME', 'main.js' );
+	define( 'WPC_MAIN_CSS_ASSET_FILENAME', 'main.css' );
 } else {
 	define( 'WPC_JS_DIR_URL', plugin_dir_url( __FILE__ ) . 'assets/js' );
 	define( 'WPC_CSS_DIR_URL', plugin_dir_url( __FILE__ ) . 'assets/css' );
+
+	define( 'WPC_MAIN_JS_ASSET_FILENAME', 'main.9efc37ffe3a3c8b9edf9.js' );
+	define( 'WPC_MAIN_CSS_ASSET_FILENAME', 'main.e76014289cf0d614f29a.css' );
 }
 
-function foobar_func( $atts ) {
-	$react_js     = includes_url( 'js/dist/vendor/react.min.js?ver=16.9.0' );
-	$react_dom_js = includes_url( 'js/dist/vendor/react-dom.min.js?ver=16.9.0' );
-	$js_to_load   = WPC_JS_DIR_URL . '/' . WPC_MAIN_JS_ASSET_FILENAME;
-	$css_to_load  = WPC_CSS_DIR_URL . '/' . WPC_MAIN_CSS_ASSET_FILENAME;
+function render_wp_calculator( $atts ) {
+	// React Assets.
+	$react_js     = includes_url( 'js/dist/vendor/react.min.js' );
+	$react_dom_js = includes_url( 'js/dist/vendor/react-dom.min.js' );
 
-	wp_enqueue_script( 'wpc-react-js', $react_js, array(), false, true );
-	wp_enqueue_script( 'wpc-react-dom-js', $react_dom_js, array(), false, true );
-	wp_enqueue_script( 'wpc-js', $js_to_load, array( 'wpc-react-js', 'wpc-react-dom-js' ), false, true );
-	wp_enqueue_style( 'wpc-css', $css_to_load );
+	// Local Assets.
+	$wpc_js_asset_url  = WPC_JS_DIR_URL . '/' . WPC_MAIN_JS_ASSET_FILENAME;
+	$wpc_css_asset_url = WPC_CSS_DIR_URL . '/' . WPC_MAIN_CSS_ASSET_FILENAME;
 
-	ob_start();
-	echo '<div id="wp-calculator"></div>';
-	return ob_get_clean();
-}
-add_shortcode( 'wp_calculator', 'foobar_func' );
+	wp_enqueue_script( 'wpc-react-js', $react_js, array(), '16.9.0', true );
+	wp_enqueue_script( 'wpc-react-dom-js', $react_dom_js, array(), '16.9.0', true );
+	wp_enqueue_script( 'wpc-js', $wpc_js_asset_url, array( 'wpc-react-js', 'wpc-react-dom-js' ), false, true );
+	wp_enqueue_style( 'wpc-css', $wpc_css_asset_url );
 
-// if ( isset( $_GET['page'] ) && 'wp-calculator' === $_GET['page'] ) {
-// add_action( 'in_admin_header', 'hide_unrelated_notices' );
-// }
-
-function render_wp_calculator_settings() {
-	echo 'hello';
+	return '<div id="wp-calculator-container"></div>';
 }
 
-// add to settings menu
-add_action(
-	'admin_menu',
-	function () {
-		add_menu_page(
-			'WP Calculator',
-			'WP Calculator',
-			'manage_options',
-			'wp-calculator',
-			'render_wp_calculator_settings',
-			'dashicons-welcome-widgets-menus',
-			30
-		);
-	}
-);
-
-function hide_unrelated_notices() {
-	global $wp_filter;
-
-	// Bail if we're not on a EverestForms screen or page.
-	if ( empty( $_REQUEST['page'] ) || false === strpos( sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ), 'dynamic-general' ) ) {
-		return;
-	}
-
-	foreach ( array( 'user_admin_notices', 'admin_notices', 'all_admin_notices' ) as $wp_notice ) {
-		if ( ! empty( $wp_filter[ $wp_notice ]->callbacks ) && is_array( $wp_filter[ $wp_notice ]->callbacks ) ) {
-			foreach ( $wp_filter[ $wp_notice ]->callbacks as $priority => $hooks ) {
-				foreach ( $hooks as $name => $arr ) {
-					if ( is_object( $arr['function'] ) && $arr['function'] instanceof Closure ) {
-						unset( $wp_filter[ $wp_notice ]->callbacks[ $priority ][ $name ] );
-						continue;
-					}
-					if ( ( isset( $_GET['tab'], $_GET['form_id'] ) || isset( $_GET['create-form'] ) ) && 'evf-builder' === $_REQUEST['page'] ) {
-						unset( $wp_filter[ $wp_notice ]->callbacks[ $priority ][ $name ] );
-						continue;
-					}
-					if ( ! empty( $arr['function'][0] ) && is_object( $arr['function'][0] ) && false !== strpos( strtolower( get_class( $arr['function'][0] ) ), 'evf_' ) ) {
-						continue;
-					}
-					if ( ! empty( $name ) && false === strpos( strtolower( $name ), 'evf_' ) ) {
-						unset( $wp_filter[ $wp_notice ]->callbacks[ $priority ][ $name ] );
-					}
-				}
-			}
-		}
-	}
-}
+add_shortcode( 'wp_calculator', 'render_wp_calculator' );
