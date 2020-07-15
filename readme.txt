@@ -1,7 +1,6 @@
 === Dynamic Calculator ===
 Contributors: krishnasuwal
-Tags: calculator, embed calculator
-Donate link: https://krishnasuwal.githumb.com/donate
+Tags: dynamic, dynamic calculator, calculator
 Requires at least: 4.9
 Tested up to: 5.4
 Requires PHP: 5.6

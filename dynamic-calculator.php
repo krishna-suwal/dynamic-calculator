@@ -5,8 +5,6 @@
  * Description: Embed calculators on your website.
  * Version: 1.0.0
  * Author: Krishna Suwal
- * Author URI: https://krishna-suwal.com
- * Text Domain: dynamic-calculator
  * Requires PHP: 5.6
  * Requires at least: 4.9
  * License: GPL-2.0+
