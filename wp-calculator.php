@@ -21,8 +21,8 @@ if ( defined( 'WPC_ENV_DEV' ) && WPC_ENV_DEV ) {
 	define( 'WPC_JS_DIR_URL', plugin_dir_url( __FILE__ ) . 'assets/js' );
 	define( 'WPC_CSS_DIR_URL', plugin_dir_url( __FILE__ ) . 'assets/css' );
 
-	define( 'WPC_MAIN_JS_ASSET_FILENAME', 'main.9efc37ffe3a3c8b9edf9.js' );
-	define( 'WPC_MAIN_CSS_ASSET_FILENAME', 'main.e76014289cf0d614f29a.css' );
+	define( 'WPC_MAIN_JS_ASSET_FILENAME', 'main.971988b4045260232936.js' );
+	define( 'WPC_MAIN_CSS_ASSET_FILENAME', 'main.1152c84ad29460152ee3.css' );
 }
 
 function render_wp_calculator( $atts ) {
