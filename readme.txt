@@ -26,7 +26,7 @@ DISCLAIMER: UI design was referenced from Google calculator.
 * Separate buttons for AC (All Clear) and CE (Clear Entry)
 
 **SHORTCODE:**
-Use the shortcode `wp_calculator` to embed a calculator.
+Use the shortcode `dc_calculator` to embed a calculator.
 
 == Changelog ==
 
