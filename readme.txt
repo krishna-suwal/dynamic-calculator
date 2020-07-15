@@ -1,6 +1,7 @@
 === Dynamic Calculator ===
 Contributors: krishnasuwal
 Tags: calculator, embed calculator
+Donate link: https://krishnasuwal.githumb.com/donate
 Requires at least: 4.9
 Tested up to: 5.4
 Requires PHP: 5.6
@@ -27,6 +28,20 @@ DISCLAIMER: UI design was referenced from Google calculator.
 
 **SHORTCODE:**
 Use the shortcode `dc_calculator` to embed a calculator.
+
+== Installation ==
+
+Go to Plugins > Add New > Search for the plugin and click install, or download and extract the plugin, and copy the the plugin folder into your wp-content/plugins directory and activate.
+You can also upload the Zip file and install from your Plugins > Add New section.
+
+== Frequently Asked Questions ==
+
+= Can I embed multiple calculator on a single page? =
+
+Currently, operations of multiple calculators on a single page isn't supported. If you insert multiple shortcode on same page, the calculator UI WILL be rendered multiple times but an action in one calculator will be reflected in all of the present calculators on the page, with same output.
+
+== Screenshots ==
+1. Preview of the calculator
 
 == Changelog ==
 
