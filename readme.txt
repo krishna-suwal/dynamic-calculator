@@ -37,7 +37,7 @@ You can also upload the Zip file and install from your Plugins > Add New section
 
 = Can I contribute? =
 
-Sure you can. Here's the GitHub [main repository](https://github.com/krishna-suwal/wp-calculator/) and [submodule](https://github.com/krishna-suwal/wp-calculator-frontend)
+Sure you can. Here's the GitHub [main repository](https://github.com/krishna-suwal/dynamic-calculator/) and [submodule](https://github.com/krishna-suwal/dynamic-calculator-frontend/)
 
 = Can I embed multiple calculator on a single page? =
 
