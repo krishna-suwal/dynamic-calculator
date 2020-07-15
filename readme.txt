@@ -35,6 +35,10 @@ You can also upload the Zip file and install from your Plugins > Add New section
 
 == Frequently Asked Questions ==
 
+= Can I contribute? =
+
+Sure you can. Here's the GitHub [main repository](https://github.com/krishna-suwal/wp-calculator/) and [submodule](https://github.com/krishna-suwal/wp-calculator-frontend)
+
 = Can I embed multiple calculator on a single page? =
 
 Currently, operations of multiple calculators on a single page isn't supported. If you insert multiple shortcode on same page, the calculator UI WILL be rendered multiple times but an action in one calculator will be reflected in all of the present calculators on the page, with same output.
