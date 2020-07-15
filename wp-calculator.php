@@ -10,6 +10,9 @@
  * License: MIT
  */
 
+define( 'WPC_MAIN_JS_ASSET_FILENAME', 'main.9efc37ffe3a3c8b9edf9.js' );
+define( 'WPC_MAIN_CSS_ASSET_FILENAME', 'main.e76014289cf0d614f29a.css' );
+
 if ( defined( 'WPC_ENV_DEV' ) && WPC_ENV_DEV ) {
 	define( 'WPC_JS_DIR_URL', 'http://localhost:3000/static/js' );
 	define( 'WPC_CSS_DIR_URL', 'http://localhost:3000/static/css' );
@@ -21,8 +24,8 @@ if ( defined( 'WPC_ENV_DEV' ) && WPC_ENV_DEV ) {
 function foobar_func( $atts ) {
 	$react_js     = includes_url( 'js/dist/vendor/react.min.js?ver=16.9.0' );
 	$react_dom_js = includes_url( 'js/dist/vendor/react-dom.min.js?ver=16.9.0' );
-	$js_to_load   = WPC_JS_DIR_URL . '/main.js';
-	$css_to_load  = WPC_CSS_DIR_URL . '/main.css';
+	$js_to_load   = WPC_JS_DIR_URL . '/' . WPC_MAIN_JS_ASSET_FILENAME;
+	$css_to_load  = WPC_CSS_DIR_URL . '/' . WPC_MAIN_CSS_ASSET_FILENAME;
 
 	wp_enqueue_script( 'wpc-react-js', $react_js, array(), false, true );
 	wp_enqueue_script( 'wpc-react-dom-js', $react_dom_js, array(), false, true );
